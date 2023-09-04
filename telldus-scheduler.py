@@ -113,10 +113,26 @@ def main():
         "-c", "--config", help="Config file to load", default="config.yaml"
     )
     parser.add_argument(
-        "-d", "--daemon", help="Run as daemon (log to syslog)", action="store_true", default=False
+        "-d",
+        "--daemon",
+        help="Run as daemon (log to syslog)",
+        action="store_true",
+        default=False,
     )
-    parser.add_argument("-l", "--list-devices", help="List registered devices and exit", action="store_true", default=False)
-    parser.add_argument("-v", "--verbose", help="Verbose output, show all debug messages", action="store_true", default=False)
+    parser.add_argument(
+        "-l",
+        "--list-devices",
+        help="List registered devices and exit",
+        action="store_true",
+        default=False,
+    )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        help="Verbose output, show all debug messages",
+        action="store_true",
+        default=False,
+    )
     args = parser.parse_args()
 
     logging.basicConfig(
