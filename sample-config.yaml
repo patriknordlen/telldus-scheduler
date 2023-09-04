@@ -1,0 +1,17 @@
+auth:
+  client_key: <client_key>
+  client_secret: <client_secret>
+  resource_owner_key: `resource_owner_key`
+  resource_owner_secret: `resource_owner_secret`
+coordinates:
+  latitude: <latitude_in_decimal_format>
+  longitude: <longitude_in_decimal_format>
+events:
+  - name: <event_name>
+    action: <"on"|"off">
+    at: <"sunset"|"sunrise"|"HH:MM">
+    devices:
+      - <device1>
+      - <device2>
+      - ...
+  - ...
