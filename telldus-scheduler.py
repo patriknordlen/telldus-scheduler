@@ -68,9 +68,9 @@ def read_config(config_file):
 def run_event(event, t):
     logging.info(f"Executing event: {event}")
     if event["action"] == "on":
-        func = t.turnOnLights
+        func = t.on
     elif event["action"] == "off":
-        func = t.turnOffLights
+        func = t.off
 
     func(event["devices"])
 
