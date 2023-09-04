@@ -85,8 +85,10 @@ def print_device_list(t):
     print(tbl)
 
 
-def run_scheduler(t, config):
+def schedule_events(t, config):
     sun = Sun(config["coordinates"]["latitude"], config["coordinates"]["longitude"])
+    schedule.clear()
+    schedule.every().day.at("00:01").do(schedule_events, t, config)
 
     for event in config["events"]:
         if event["at"] == "sunset":
@@ -98,6 +100,8 @@ def run_scheduler(t, config):
         logging.info(f"Scheduling event: {event}")
         schedule.every().day.at(event_time).do(run_event, event, t)
 
+
+def run_scheduler():
     while True:
         schedule.run_pending()
         time.sleep(1)
@@ -142,11 +146,13 @@ def main():
         print_device_list(t)
         sys.exit(0)
     else:
+        schedule_events(t, config)
+
         if args.daemon:
             with daemon.DaemonContext():
-                run_scheduler(t, config)
+                run_scheduler()
         else:
-            run_scheduler(t, config)
+            run_scheduler()
 
 
 if __name__ == "__main__":
